@@ -1,0 +1,78 @@
+id,wilayah_id,unit_kerja
+1,1,Kanwil 1 Medan
+2,1,Batam
+3,1,CABANG MEDAN
+4,1,KUP MANDAILING NATAL
+5,1,KUP RANTAU PRAPAT
+6,1,Pekanbaru
+7,1,TANJUNG PINANG
+8,1,PADANG
+9,1,Balige
+10,1,Banda Aceh
+11,2,Kanwil II Palembang
+12,2,Bengkulu
+13,2,Bandar Lampung
+14,2,Kanca Jambi
+15,2,Pangkalpinang
+16,2,Palembang
+17,2,KUP Lubuk Linggau
+18,3,Kanwil III JKT
+19,3,Tangerang 
+20,3,Serang 
+21,3,Cabang Jakarta
+22,3,KCK
+23,3,Kanca Pontianak
+24,4,Kanwil IV Bandung
+25,4,KC Bandung
+26,4,KC Cirebon
+27,4,KC Purwakarta
+28,4,KC Sukabumi
+29,4,KC Tasikmalaya
+30,4,KUP Cimahi
+31,5,Kantor Wilayah V Semarang
+32,5,PURWOKERTO
+33,5,Yogyakarta
+34,5,Cabang Solo
+35,5,Cabang Semarang
+36,5,Cabang Kudus
+37,5,Cabang Pekalongan
+38,6,Kanwil VI Surabaya 
+39,6,Kediri 
+40,6,Banyuwangi
+41,6,Surabaya
+42,6,Madiun
+43,6,Malang
+44,7,Cabang Denpasar
+45,7,Kanwil VII Denpasar
+46,7,Mataram
+47,7,Cabang Kupang
+48,7,Sumbawa Besar
+49,8,Kanwil VIII Banjarmasin
+50,8,Cabang Palangkaraya
+51,8,KUP Pangkalan Bun
+52,8,Samarinda
+53,8,Balikpapan
+54,8,Cabang Tarakan
+55,8,Banjarmasin
+56,9,Kanwil IX
+57,9,Mamuju
+58,9,Makassar
+59,9,Gorontalo
+60,9,PAREPARE
+61,9,palopo
+62,9,Palu
+63,9,Kendari
+64,9,Manado
+65,9,BITUNG
+66,9,Ambon
+67,9,Ternate
+68,9,Jayapura
+69,9,Manokwari
+70,9,SORONG
+71,10,Kantor Pusat
+72,10,MANAGEMENT BUILDING
+73,11,Jamsyar Pusat
+74,12,Jamsyar Cabang Makassar
+75,12, KANCA SURABAYA
+76,6,  KANCA KEDIRI
+77,6,  KANCA MALANG
