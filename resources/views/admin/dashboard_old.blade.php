@@ -1,5 +1,6 @@
-@extends('layouts.app-template')
-
+@include('layouts.header')
+<!-- Sidebar -->
+@include('layouts.sidebar')
 @section('content')
 <div id="wrapper">
         <div class="overlay"></div>

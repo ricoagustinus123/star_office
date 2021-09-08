@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\karyawan;
 use App\Models\wilayah;
 use App\Models\unit_kerja;
+use App\Models\User;
 use App\Imports\KaryawanImport;
 use Illuminate\Http\Request;
 use Excel;
@@ -23,6 +24,18 @@ class KaryawanController extends Controller
         $units = unit_kerja::all();
         return view('admin.karyawan.index',compact('karyawans','wilayahs','units'));
         
+    }
+    public function indexKanwil1(Request $req){
+        $users = $req->session()->get('status');
+        if ($users === "admin") {
+            $karyawans = karyawan::where("wilayah_id",1)->orWhere("wilayah_id",2)->orWhere("wilayah_id",3)->paginate(10); 
+        }
+        $wilayahs = wilayah::all();
+        $units = unit_kerja::all();
+        return view('admin.karyawan.index',compact('karyawans','wilayahs','units'));
+        
+        
+
     }
     public function formtambah(Request $req)
     {
@@ -47,7 +60,7 @@ class KaryawanController extends Controller
     public function create(Request $req)
     {
     
-
+  
         $karyawans= new karyawan;
         $karyawans->nama = $req->nama;
         $karyawans->nik = $req->nik;
@@ -55,14 +68,18 @@ class KaryawanController extends Controller
         $karyawans->wilayah_id = $req->wilayah_id;
         $karyawans->unit_kerja_id = $req->unit_kerja_id;
         $karyawans->bidang_tugas = $req->bidang_tugas;
+        $karyawans->pendidikan_formal  = $req->pendidikan_formal;
         $karyawans->honor = $req->honor;
         $karyawans->no_telp = $req->no_telp;
-        $karyawans->alamat = $req->alamat;
+        $karyawans->alamat_domisili = $req->alamat_domisili;
+        $karyawans->alamat_ktp = $req->alamat_ktp;
         $karyawans->perjanjian_kerja = $req->perjanjian_kerja;
         $karyawans->vaksin = $req->vaksin;
+        $foto = $req->file('file')->getClientOriginalName();
+        $karyawans->foto_ktp = $req->file('file')->storeAs('uploads',$foto,'public');
         $query = $karyawans->save();
         if ($query) {
-          
+            
             return redirect('admin/karyawan');
 
             
@@ -135,9 +152,11 @@ class KaryawanController extends Controller
         $karyawans->wilayah_id = $req->wilayah_id;
         $karyawans->unit_kerja_id = $req->unit_kerja_id;
         $karyawans->bidang_tugas = $req->bidang_tugas;
+        $karyawans->pendidikan_formal = $req->pendidikan_formal;
         $karyawans->perjanjian_kerja = $req->perjanjian_kerja;
         $karyawans->vaksin = $req->vaksin;
-        $karyawans->alamat = $req->alamat;
+        $karyawans->alamat_domisili = $req->alamat_domisili;
+        $karyawans->alamat_ktp = $req->alamat_ktp;
         $query = $karyawans->save();
         if($query){
             return redirect('admin/karyawan');

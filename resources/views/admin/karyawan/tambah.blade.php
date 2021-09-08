@@ -21,20 +21,24 @@
                         
                         <div class="form-row">
                             <div class="col-md-4">
-                                <input id="name" type="text" class="form-control" name="nama"  required autofocus placeholder="Name">
+                                <label>Name:</label>
+                                <input id="name" type="text" class="form-control" name="nama"  required autofocus placeholder="Budi">
                                
                         </div>
 
                         <div class="col-md-4">
+                            <label for="nik">NIK:</label>
                             <input id="nik" type="text" class="form-control" name="nik"  placeholder="NIK">
 
                            
                     </div>
                     <div class="col-md-4">
+                        <label for="tanggal_lahir">tanggal lahir:</label>
                         <input id="tanggal_lahir" type="date" class="form-control" name="tanggal_lahir"  required autofocus placeholder="Tanggal_lahir">
                        
                 </div>
                             <div class="col-md-4">
+                                <label for="no_telp">No. Telp/Hp </label>
                                 <input id="no_telp" type="text" class="form-control" name="no_telp"  required placeholder="No Handphone">
 
                                
@@ -42,6 +46,7 @@
                            
                             <br><br>
                             <div class="col-md-4">
+                                <label for="Wilayah">wilayah kerja</label>
                                 <select class="form-control js-country" name="wilayah_id">
                                     <option value="-1" selected disabled>Silahkan Pilih Wilayah</option>
                                     @foreach ($wilayahs as $wilayah)
@@ -50,6 +55,7 @@
                                 </select>
                         </div>
                             <div class="col-md-4">
+                                <label for="unit_kerja">Unit Kerja</label>
                                 <select class="form-control js-states" name="unit_kerja_id">
                                     <option value="-1" selected disabled>Silahkan Pilih Unit Kerja</option>
              
@@ -61,19 +67,32 @@
                                 </select>
                         </div>
                             <div class="col-md-4">
+                                <label for="bidang_tugas">Bidang Tugas:</label>
                                 <input id="bidang_tugas" type="text" class="form-control" name="bidang_tugas" required placeholder="Bidang Tugas">
 
                                
                         </div>
-                        <br><br>
-                            <div class="col-md-4">
+                        <br/><br/>
+                        <div class="col-md-4">
+                            <label for="">Pendidikan Formal:</label>
+                            <select class="form-control js-states" name="pendidikan_formal">
+                                <option value="S1" >Sarjana S1</option>
+                                <option value="SMA" >SMA</option>
+                                <option value="SMK/STM" >SMK/STM</option>
+                                <option value="SMP" >SMP</option>
+                                <option value="SD" >SD</option>
+                            </select>
+                           
+                    </div> 
+                        <div class="col-md-4">
+                            <label for="">Honor</label>
                                 <input id="honor" type="number" class="form-control" name="honor"  required placeholder="Honor">
-
                                
-                        </div>
+                        </div><br/> <br/> <br/>
                         
                        
                             <div class="col-md-4">
+                                <label for="">Perjanjian Kerja</label>
                                 <select class="form-control js-country" name="perjanjian_kerja">
                                     <option value="-1" selected disabled>Perjanjian Kerja</option>
                                    
@@ -84,6 +103,7 @@
                         </div>
                         
                         <div class="col-md-4">
+                            <label for="">vaksin:</label>
                             <select class="form-control js-country" name="vaksin">
                                 <option value="-1" selected disabled>Vaksin</option>
                                
@@ -93,14 +113,27 @@
                             </select>
                     </div>
                             
-                    </div>
+                    </div><br/> <br/> <br/>
                            
                       
                         <div class="col-md-12">
-                            <textarea id="alamat" type="text" class="form-control" name="alamat"  placeholder="Address"></textarea>
+                            <label for="">Alamat Domisili:</label>
+                            <textarea id="alamat" type="text" class="form-control" name="alamat_domisili"  placeholder="alamat"></textarea>
 
 
                     </div>
+                    <div class="col-md-12">
+                        <label for="">Alamat Sesuai KTP:</label>
+                        <textarea id="alamat" type="text" class="form-control" name="alamat_ktp"  placeholder="alamat KTP"></textarea>
+
+
+                </div>
+                <div class="col-md-12">
+                    <label for="">Upload Foto KTP:</label>
+                    <input type="file" name="file" id="file">
+
+
+            </div>
                     </div>
                 </div>
            

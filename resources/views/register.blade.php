@@ -71,7 +71,9 @@
           <option value="bandung">bandung</option>
           <option value="semarang">semarang</option>
           <option value="makassar">makassar</option>
-          <option value="pusat">pusat</option>
+          <option value="pusat1">pusat</option>
+          <option value="pusat2">pusat2</option>
+          <option value="pusat3">pusat3</option>
           <span class="text-danger">@error('name') {{ $message }}@enderror</span>
       </select>
     </div>

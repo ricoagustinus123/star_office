@@ -75,7 +75,18 @@
                             @endif
                         </div>
 
-                        <br><br><br>
+                        <br/><br/><br/>
+                        <div class="col-md-4">
+                            <label for="">Pendidikan Formal:</label>
+                            <input id="pendidikan_formal" type="text" class="form-control" name="pendidikan_formal" value="{{ $karyawan->pendidikan_formal }}" required>
+
+                                @if ($errors->has('pendidikan_formal'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('honor') }}</strong>
+                                    </span>
+                                @endif
+                           
+                    </div> 
                             <div class="col-md-4">
                                 <label>honor</label>
                                 <input id="honor" type="number" class="form-control" name="honor" value="{{ $karyawan->honor }}" required>
@@ -106,8 +117,8 @@
                             
                     </div>
                         <div class="col-md-8">
-                            <label>Alamat</label>
-                            <textarea id="alamat" type="text" class="form-control" name="alamat"  required>{{ $karyawan->alamat }}</textarea>
+                            <label>Alamat Domisili</label>
+                            <textarea id="alamat" type="text" class="form-control" name="alamat_domisili"  required>{{ $karyawan->alamat_domisili }}</textarea>
 
                             @if ($errors->has('alamat'))
                                 <span class="help-block">
@@ -115,6 +126,16 @@
                                 </span>
                             @endif
                     </div>
+                    <div class="col-md-8">
+                        <label>Alamat KTP</label>
+                        <textarea id="alamat" type="text" class="form-control" name="alamat_ktp"  required>{{ $karyawan->alamat_domisili }}</textarea>
+
+                        @if ($errors->has('alamat'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('alamat') }}</strong>
+                            </span>
+                        @endif
+                </div>
                     <br><br><br><br>
                         <div class="form-group pull-right">
                             <div class="col-md-6 ">

@@ -6,8 +6,8 @@
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation" style="background: rgb(2, 93, 116)">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" style="background: rgb(2, 93, 116)">
-        <span class="sr-only">Toggle navigation</span>
+      <a href="#" class="sidebar-toggle menu_toogle " data-toggle="offcanvas" role="button" >
+        <span class="sr-only" >Toggle navigation</span>
       </a>
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
@@ -17,7 +17,7 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{{ asset("/bower_components/AdminLTE/dist/img/user2-160x160.jpg") }}" class="user-image" alt="User Image">
+              {{-- <img src="{{ asset("/bower_components/AdminLTE/dist/img/user2-160x160.jpg") }}" class="user-image" alt="User Image"> --}}
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
             
             </a>
@@ -53,4 +53,3 @@
       </div>
     </nav>
   </header>
-  <a href="'logout">Logout</a>

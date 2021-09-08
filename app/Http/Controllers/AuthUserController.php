@@ -42,6 +42,7 @@ class AuthUserController extends Controller
         if ($users) {
             if (Hash::check($req->password,$users->password)) {
                 $req->session()->put('LoggedUser',$users->id);
+                $req->session()->put('status',$users->status);
                 if ($users->status === 'admin') {
                     return redirect('admin/dashboard');
                 }if ($users->status === 'keuangan' && $users->status === 'bisnis' ) {
@@ -59,7 +60,7 @@ class AuthUserController extends Controller
                 }
                 // return redirect('admin/dashboard');
             }else {
-                return back()->with('fail','password salah');
+                return back()->with('success','password salah');
             }   
            
         }else {

@@ -46,9 +46,9 @@
     <h3><b>STAR </b> Office</h3>
 
     <div class="results">
-      @if(Session::get('success'))
-        <div class="alert alert-danger">
-          {{Session::get('fail')}}
+      @if(Session::get('email'))
+        <div class="text-danger">
+          Gagal Login
         </div>
       @endif
     </div>
