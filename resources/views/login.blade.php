@@ -39,7 +39,7 @@
     
   </div>
   <!-- /.login-logo -->
-  <div class="login-container"">
+  <div class="login-container">
 
   
   <div class="login-box-body" style="display: flex;align-items:center; flex-direction:column; padding:15px 0; width:30vw; height:310px; border-radius:10px;">

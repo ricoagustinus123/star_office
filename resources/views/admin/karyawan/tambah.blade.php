@@ -31,7 +31,25 @@
                             <input id="nik" type="text" class="form-control" name="nik"  placeholder="NIK">
 
                            
-                    </div>
+                    </div> 
+                    <div class="col-md-4">
+                        <label for="no_npwp">No NPWP:</label>
+                        <input id="no_npwp" type="text" class="form-control" name="no_npwp"  placeholder="NIK">
+
+                       
+                </div>
+                <br><br>
+                <div class="col-md-4">
+                    <label for="no_bpjs_ketenagakerjaan">No BPJS Ketenagkerjaan:</label>
+                    <input id="no_bpjs_ketenagakerjaan" type="text" class="form-control" name="no_bpjs_ketenagakerjaan"  required autofocus placeholder="No BPJS Ketenagakerjaan">
+                   
+            </div>
+            
+            <div class="col-md-4">
+                <label for="no_bpjs_kesehatan">No BPJS Kesehatan:</label>
+                <input id="no_bpjs_kesehatan" type="text" class="form-control" name="no_bpjs_kesehatan"  required autofocus placeholder="No BPJS Kesehatan">
+               
+        </div>
                     <div class="col-md-4">
                         <label for="tanggal_lahir">tanggal lahir:</label>
                         <input id="tanggal_lahir" type="date" class="form-control" name="tanggal_lahir"  required autofocus placeholder="Tanggal_lahir">
@@ -43,8 +61,19 @@
 
                                
                         </div>
+                        <div class="col-md-4">
+                            <label for="jenis_kelamin">Jenis Kelamin: </label>
+                            <select class="form-control js-country" name="jenis_kelamin">
+                                <option value="-1" selected disabled>Jenis Kelamin</option>
+                                <option value="pria">Pria</option>
+                                <option value="wanita">Wanita</option>
+                                
+                            </select>
+
                            
-                            <br><br>
+                    </div>
+                           
+                           
                             <div class="col-md-4">
                                 <label for="Wilayah">wilayah kerja</label>
                                 <select class="form-control js-country" name="wilayah_id">
@@ -68,7 +97,16 @@
                         </div>
                             <div class="col-md-4">
                                 <label for="bidang_tugas">Bidang Tugas:</label>
-                                <input id="bidang_tugas" type="text" class="form-control" name="bidang_tugas" required placeholder="Bidang Tugas">
+                                <select class="form-control js-states" name="bidang_tugas">
+                                    <option value="-1" >Pilih Bidang Tugas</option>
+                                    <option value="security" >security</option>
+                                    <option value="driver" >driver</option>
+                                    <option value="office boy" >office boy</option>
+                                    <option value="office girl" >office girl</option>
+                                    <option value="cleaning service" >cleaning service</option>
+                                    <option value="agendaris" >agendaris</option>
+                                    <option value="mechanical engineering" >mechanical engineering</option>
+                                </select>
 
                                
                         </div>
@@ -76,6 +114,7 @@
                         <div class="col-md-4">
                             <label for="">Pendidikan Formal:</label>
                             <select class="form-control js-states" name="pendidikan_formal">
+                                <option value="S1" selected disabled>Pilih Pendidikan</option>
                                 <option value="S1" >Sarjana S1</option>
                                 <option value="SMA" >SMA</option>
                                 <option value="SMK/STM" >SMK/STM</option>
@@ -101,6 +140,12 @@
                                    
                                 </select>
                         </div>
+
+                        <div class="col-md-4">
+                            <label for="">Kontrak Ke:</label>
+                            <input id="kontrak" type="number" class="form-control" name="kontrak"  required placeholder="Kontrok Ke">
+                    </div>
+                        
                         
                         <div class="col-md-4">
                             <label for="">vaksin:</label>
@@ -117,23 +162,29 @@
                            
                       
                         <div class="col-md-12">
-                            <label for="">Alamat Domisili:</label>
-                            <textarea id="alamat" type="text" class="form-control" name="alamat_domisili"  placeholder="alamat"></textarea>
+                            <label for="alamat_domisili">Alamat Domisili:</label>
+                            <textarea id="alamat_domisili" type="text" class="form-control" name="alamat_domisili"  placeholder="alamat_domisili"></textarea>
 
 
                     </div>
                     <div class="col-md-12">
-                        <label for="">Alamat Sesuai KTP:</label>
-                        <textarea id="alamat" type="text" class="form-control" name="alamat_ktp"  placeholder="alamat KTP"></textarea>
+                        <label for="alamat_ktp">Alamat Sesuai KTP:</label>
+                        <textarea id="alamat_ktp" type="text" class="form-control" name="alamat_ktp"  placeholder="alamat KTP"></textarea>
 
 
                 </div>
                 <div class="col-md-12">
                     <label for="">Upload Foto KTP:</label>
-                    <input type="file" name="file" id="file">
+                    <input type="file" name="file_ktp" id="file_ktp">
 
 
             </div>
+            <div class="col-md-12">
+                <label for="file_karyawan">Upload Foto Karyawan:</label>
+                <input type="file" name="file_karyawan" id="file_karyawan">
+
+
+        </div>
                     </div>
                 </div>
            

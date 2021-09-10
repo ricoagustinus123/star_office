@@ -1,10 +1,11 @@
   <!-- Main Header -->
-  <header class="main-header">
-
+  <link rel="stylesheet" href="{{asset('css/layout.css')}}">
+  <header class="main-header " >
+   
     <!-- Logo -->
     
     <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation" style="background: rgb(2, 93, 116)">
+    <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle menu_toogle " data-toggle="offcanvas" role="button" >
         <span class="sr-only" >Toggle navigation</span>

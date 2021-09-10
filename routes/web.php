@@ -35,7 +35,7 @@ Route::post('tambah',[WilayahController::class,'create'])->name('tambah.wilayah'
 Route::middleware(['isLogged'])->group(function () {
     // Admin Dasgboard
     Route::get('admin/dashboard',[TampilController::class,'dashboard_admin']);
-    Route::get('admin/karyawan',[KaryawanController::class,'indexKanwil1']);
+    Route::get('admin/karyawan',[KaryawanController::class,'index']);
     Route::get('admin/karyawan/search/',[KaryawanController::class,'show'],function(Request $request){
         $token = $request->session()->token();
 

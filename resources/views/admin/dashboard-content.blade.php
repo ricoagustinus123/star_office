@@ -1,5 +1,5 @@
  <!-- Main content -->
- <section class="content">
+ <section class="content" style="width: 80vw;margin:0; overflow-x:hidden;">
   <!-- Info boxes -->
   <div class="row">
      <!-- /.col -->

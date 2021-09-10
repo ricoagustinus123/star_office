@@ -1,73 +1,60 @@
-html {
-    scroll-behavior: smooth;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    width: 100vw;
-    height: auto;
-    min-height: 100vh;
-    background-color: rgb(235, 235, 238);
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.container {
-    width: 100%;
-    padding: 20px 0;
-    display: flex;
-    background-image: url(https://picsum.photos/seed/14/900);
-    background-size: cover;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-a {
-    color: white;
-}
-
-.login-container {
-    display: flex;
-    width: 100vw;
-    justify-content: center;
-}
-
-.login-box-body form input {
-    width: 340px;
-}
-
-.btm {
-    width: 100px;
-}
-
-
-/* Table */
-
-.title-table {
-    background-color: cornflowerblue;
-    color: white;
-    position: sticky;
-    top: 0;
-}
-
-.menu_toogle {
-    display: none;
-
-}
-
-@media only screen and (max-width:600px) {
-    .login-container {
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    a {
+        color: white;
+    }
+    
+    .container {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
+        background-size: cover;
+        background-image: url(https://picsum.photos/seed/126/900);
     }
+    
+    .login-container {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .login-box-body form input {
+        width: 340px;
+    }
+    
+    .btm {
+        width: 100px;
+    }
+    /* Table */
+    
+    .title-table {
+        background-color: cornflowerblue;
+        color: white;
+        position: sticky;
+        top: 0;
+    }
+    
     .menu_toogle {
-        display: inline;
-        background: rgb(2, 93, 116);
-        color: red;
+        display: none;
     }
-}
+    
+    @media only screen and (max-width:600px) {
+        .menu_toogle {
+            display: inline;
+            background: rgb(2, 93, 116);
+            color: red;
+        }
+        .login-container {
+            flex-direction: column;
+        }
+    }

@@ -12,6 +12,7 @@
                     <form class="form-horizontal" role="form" method="post" action="{{route('proses.update')}}" enctype="multipart/form-data">
                 
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="id" value="{{$karyawan->id}}">
                        
                     
                             
@@ -32,6 +33,18 @@
                                     </span>
                                 @endif
                             </div>
+                            <div class="col-md-4">
+                                <label for="no_bpjs_ketenagakerjaan">No BPJS Ketenagkerjaan:</label>
+                                <input id="no_bpjs_ketenagakerjaan" type="text" class="form-control" name="no_bpjs_ketenagakerjaan"  required autofocus placeholder="No BPJS Ketenagakerjaan" value="{{$karyawan->no_bpjs_ketenagakerjaan}}">
+                               
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <label for="no_bpjs_kesehatan">No BPJS Kesehatan:</label>
+                            <input id="no_bpjs_kesehatan" type="text" class="form-control" name="no_bpjs_kesehatan"  required autofocus placeholder="No BPJS Kesehatan" value="{{$karyawan->no_bpjs_kesehatan}}">
+                           
+                    </div><br><br><br>
+                        
                         
                             <div class="col-md-4">
                                 <label>tanggal lahir</label>
@@ -43,7 +56,23 @@
                                     </span>
                                 @endif
                         </div>
-                           <br><br><br>
+
+                        <div class="col-md-4">
+                            <label>jenis kelamin</label>
+                            <select class="form-control js-country" name="jenis_kelamin">
+                                <option value="-1" selected disabled>Jenis Kelamin</option>
+                                <option value="pria" {{$karyawan->jenis_kelamin === "pria" ? 'selected':""}}>Pria</option>
+                                <option value="wanita" {{$karyawan->jenis_kelamin === "wanita" ? 'selected':""}}>Wanita</option>
+                                
+                            </select>
+
+                            @if ($errors->has('tanggal_lahir'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('tanggal_lahir') }}</strong>
+                                </span>
+                            @endif
+                    </div>
+                           
 
                            <div class="col-md-4">
                                <label>Wilayah</label>
@@ -62,12 +91,19 @@
                                     @endforeach
                                 </select>
                         </div>
-                        <br/>
+                       
   
                             <div class="col-md-4">
                                 <label>bidang tugas</label>
-                                <input id="bidang_tugas" type="text" name="bidang_tugas" value="{{$karyawan->bidang_tugas}}"/>
-                                
+                                <select class="form-control js-states" name="bidang_tugas">
+                                    <option value="security" {{$karyawan->bidang_tugas === 'security' ? 'selected' : ''}} >security</option>
+                                    <option value="driver" {{$karyawan->bidang_tugas === 'driver' ? 'selected' : ''}} >driver</option>
+                                    <option value="office boy"{{$karyawan->bidang_tugas === 'office boy' ? 'selected' : ''}} >office boy</option>
+                                    <option value="office girl" {{$karyawan->bidang_tugas === 'office girl' ? 'selected' : ''}} >office girl</option>
+                                    <option value="cleaning service" {{$karyawan->bidang_tugas === 'cleaning service' ? 'selected' : ''}} >cleaning service</option>
+                                    <option value="agendaris" {{$karyawan->bidang_tugas === 'agendaris' ? 'selected' : ''}} >agendaris</option>
+                                    <option value="mechanical engineering" {{$karyawan->bidang_tugas === 'mechanical engineering' ? 'selected' : ''}} >mechanical engineering</option>
+                                </select>
                                 @if ($errors->has('bidang_tugas'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('bidang_tugas') }}</strong>
@@ -100,7 +136,7 @@
                             <div class="col-md-4">
                               
                                     <label>no telpon</label>
-                                    <input type="number" value="{{ $karyawan->no_telp }}" name="no_telp" class="form-control pull-right" id="birthDate" required>
+                                    <input type="number" value="{{ $karyawan->no_telp }}" name="no_telp" class="form-control pull-right" required>
                              
                         </div>
 
@@ -128,13 +164,21 @@
                     </div>
                     <div class="col-md-8">
                         <label>Alamat KTP</label>
-                        <textarea id="alamat" type="text" class="form-control" name="alamat_ktp"  required>{{ $karyawan->alamat_domisili }}</textarea>
+                    <textarea id="alamat" type="text" class="form-control" name="alamat_ktp"  required>{{ $karyawan->alamat_ktp }}</textarea>
 
                         @if ($errors->has('alamat'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('alamat') }}</strong>
                             </span>
                         @endif
+                </div>
+                <div class="col-md-8">
+                    <label>foto ktp</label>
+                    <input type="file" name="foto_ktp" value="{{$karyawan->foto_ktp}}"/>
+                </div>
+                <div class="col-md-8">
+                    <label>foto karyawan</label>
+                    <input type="file" name="foto_karyawan" value="{{$karyawan->foto_karyawan}}"/>
                 </div>
                     <br><br><br><br>
                         <div class="form-group pull-right">

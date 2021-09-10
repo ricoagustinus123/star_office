@@ -64,19 +64,28 @@ class KaryawanController extends Controller
         $karyawans= new karyawan;
         $karyawans->nama = $req->nama;
         $karyawans->nik = $req->nik;
+        $karyawans->no_npwp = $req->no_npwp;
+        $karyawans->no_bpjs_ketenagakerjaan = $req->no_bpjs_ketenagakerjaan;
+        $karyawans->no_bpjs_kesehatan = $req->no_bpjs_kesehatan;
         $karyawans->tanggal_lahir = $req->tanggal_lahir;
         $karyawans->wilayah_id = $req->wilayah_id;
         $karyawans->unit_kerja_id = $req->unit_kerja_id;
         $karyawans->bidang_tugas = $req->bidang_tugas;
-        $karyawans->pendidikan_formal  = $req->pendidikan_formal;
+        $karyawans->pendidikan_formal = $req->pendidikan_formal;
         $karyawans->honor = $req->honor;
         $karyawans->no_telp = $req->no_telp;
+        $karyawans->jenis_kelamin = $req->jenis_kelamin;
         $karyawans->alamat_domisili = $req->alamat_domisili;
         $karyawans->alamat_ktp = $req->alamat_ktp;
+        $karyawans->foto_karyawan = $req->foto_karyawan;
+        $karyawans->foto_ktp = $req->foto_ktp;
         $karyawans->perjanjian_kerja = $req->perjanjian_kerja;
+        $karyawans->kontrak = $req->kontrak;
         $karyawans->vaksin = $req->vaksin;
-        $foto = $req->file('file')->getClientOriginalName();
-        $karyawans->foto_ktp = $req->file('file')->storeAs('uploads',$foto,'public');
+        $foto = $req->file('file_ktp')->getClientOriginalName();
+        $karyawans->foto_ktp = $req->file('file_ktp')->move(public_path('uploads'),$foto); 
+        $foto_karyawan = $req->file('file_karyawan')->getClientOriginalName();
+        $karyawans->foto_karyawan = $req->file('file_karyawan')->move(public_path('uploads'),$foto_karyawan);
         $query = $karyawans->save();
         if ($query) {
             
@@ -118,7 +127,7 @@ class KaryawanController extends Controller
     {
         $search = $req->search;
 
-        $karyawans = karyawan::where('nama','like',"%".$search."%")->paginate();
+        $karyawans = karyawan::where('nama','like',"%".$search."%")->orWhere('nama','like',"%".$search."%")->paginate();
         $wilayahs = wilayah::all();
         $units = unit_kerja::all();
         return view('admin.karyawan.index',compact('wilayahs','units','karyawans'));
@@ -142,23 +151,32 @@ class KaryawanController extends Controller
      * @param  \App\Models\karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $req, karyawan $karyawan)
+    public function update(Request $req)
     {
       
-        $karyawans = new karyawan;
-        $karyawans->nama = $req->nama;
-        $karyawans->nik = $req->nik;
-        $karyawans->tanggal_lahir = $req->tanggal_lahir;
-        $karyawans->wilayah_id = $req->wilayah_id;
-        $karyawans->unit_kerja_id = $req->unit_kerja_id;
-        $karyawans->bidang_tugas = $req->bidang_tugas;
-        $karyawans->pendidikan_formal = $req->pendidikan_formal;
-        $karyawans->perjanjian_kerja = $req->perjanjian_kerja;
-        $karyawans->vaksin = $req->vaksin;
-        $karyawans->alamat_domisili = $req->alamat_domisili;
-        $karyawans->alamat_ktp = $req->alamat_ktp;
-        $query = $karyawans->save();
-        if($query){
+        $karyawans = karyawan::where('id',$req->id)->update([
+        "nama"=>$req->input('nama'),
+        "nik"=>$req->input('nik'),
+        "no_npwp"=>$req->input('no_npwp'),
+        "no_bpjs_ketenagakerjaan"=>$req->input('no_bpjs_ketenagakerjaan'),
+        "no_bpjs_kesehatan"=>$req->input('no_bpjs_kesehatan'),
+        "tanggal_lahir"=>$req->input('tanggal_lahir'),
+        "wilayah_id"=>$req->input('wilayah_id'),
+        "unit_kerja_id"=>$req->input('unit_kerja_id'),
+        "bidang_tugas"=>$req->input('bidang_tugas'),
+        "pendidikan_formal"=>$req->input('pendidikan_formal'),
+        "honor"=>$req->input('honor'),
+        "jenis_kelamin"=>$req->input('jenis_kelamin'),
+        "alamat_domisili"=>$req->input('alamat_domisili'),
+        "alamat_ktp"=>$req->input('alamat_ktp'),
+        "foto_karyawan"=>$req->input('foto_karyawan'),
+        "foto_ktp"=>$req->input('foto_ktp'),
+        "perjanjian_kerja"=>$req->input('perjanjian_kerja'),
+        "kontrak"=>$req->input('kontrak'),
+        "vaksin"=>$req->input('vaksin')
+                      
+    ]);
+        if($karyawans){
             return redirect('admin/karyawan');
         }else {
             return back();
