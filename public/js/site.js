@@ -1,50 +1,58 @@
 function loadItems(element, path, selectInputClass) {
-  var selectedVal = $(element).val();
+    var selectedVal = $(element).val();
 
-  // select all
-  if (selectedVal == -1) {
-    return;
-  }
-
-  $.ajax({
-  type: 'GET',
-  url: path + selectedVal,
-  success: function (datas) {
-    if (!datas || datas.length === 0) {
-       return;
+    // select all
+    if (selectedVal == -1) {
+        return;
     }
 
-    for (var  i = 0; i < datas.length; i++) {
-      $(selectInputClass).append($('<option>', {
-        value: datas[i].id,
-        text: datas[i].name
-    }));
-    }
-  },
-  error: function (ex) {
-  }
-  });
+    $.ajax({
+        type: 'GET',
+        url: path + selectedVal,
+        success: function(datas) {
+            if (!datas || datas.length === 0) {
+                return;
+            }
+
+            for (var i = 0; i < datas.length; i++) {
+                $(selectInputClass).append($('<option>', {
+                    value: datas[i].id,
+                    text: datas[i].unit_kerja
+                }));
+            }
+        },
+        error: function(ex) {}
+    });
 }
 
 
 
-function loadCities(element) {
-  $('.js-cities').empty().append('<option value="-1">Please select your city</option>');;
-  loadItems(element, '../api/cities/', '.js-cities');
+function loadUnits(element) {
+    $('.js-units').empty().append('<option value="-1">Silahkan Pilih Unit Kerja</option>');;
+    loadItems(element, '/api/units/', '.js-units');
+}
+
+function loadUnits(element) {
+    $('.js-units').empty().append('<option value="-1">Silahkan Pilih Unit Kerja</option>');;
+    loadItems(element, '/api/units/', '.js-units');
 }
 
 function registerEvents() {
-  $('.js-country').change(function() {
-    loadStates(this);
-  });
+    $('.js-wilayah').change(function() {
+        loadUnits(this);
+    });
 
-  $('.js-states').change(function() {
-    loadCities(this);
-  });
+    $('.foto_karyawan').change(function() {
+        loadImg(this);
+    });
+
+    $('.js-states').change(function() {
+        loadCities(this);
+    });
 }
 
 function init() {
-  registerEvents();
+    registerEvents();
 }
 
 init();

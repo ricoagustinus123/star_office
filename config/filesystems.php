@@ -32,12 +32,12 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => public_path('app'),
+            'root' => public_path('uploads'),
         ],
 
         'public' => [
             'driver' => 'local',
-            'root' => public_path('app/public'),
+            'root' => public_path('public/uploads'),
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],

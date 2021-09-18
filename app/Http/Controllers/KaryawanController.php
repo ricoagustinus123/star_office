@@ -10,6 +10,7 @@ use App\Imports\KaryawanImport;
 use Illuminate\Http\Request;
 use Excel;
 use PDF;
+use File;
 class KaryawanController extends Controller
 {
     /**
@@ -193,6 +194,10 @@ class KaryawanController extends Controller
     public function destroy($id)
     {
         $karyawans = karyawan::find($id);
+        $data_ktp = substr($karyawans->foto_ktp,66);
+        $data_karyawan = substr($karyawans->foto_karyawan,66);
+        unlink(public_path("uploads/$data_ktp"));
+        unlink(public_path("uploads/$data_karyawan"));
         $karyawans->delete();
         return redirect('admin/karyawan');
     }

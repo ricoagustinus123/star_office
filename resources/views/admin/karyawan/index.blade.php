@@ -91,8 +91,10 @@
                   <td>{{ $karyawan->alamat_ktp }}</td>
                   <td>{{ $karyawan->perjanjian_kerja }}</td>
                   <td>{{ $karyawan->vaksin }}</td>
-                  <td><img src="{{url('uploads/'.$karyawan->foto_karyawan)}}" alt="gagal"></td>
-                  <td>{{ $karyawan->foto_ktp }}</td>
+       
+                  <td><img src="{{asset('uploads/'.substr($karyawan->foto_ktp,66))}}" width="50" alt="gagal"></td>
+                  <td><img src="{{asset('uploads/'.substr($karyawan->foto_karyawan,66))}}" width="50" alt="gagal"></td>
+                 
                   <td style="z-index:100; paddingZ:">
                 
                       <form method="POST" action="{{route('delete.karyawan',['id' => $karyawan->id]) }}">

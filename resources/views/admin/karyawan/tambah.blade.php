@@ -76,21 +76,17 @@
                            
                             <div class="col-md-4">
                                 <label for="Wilayah">wilayah kerja</label>
-                                <select class="form-control js-country" name="wilayah_id">
-                                    <option value="-1" selected disabled>Silahkan Pilih Wilayah</option>
+                                <select class="form-control js-wilayah" name="wilayah_id" id="wilayah_id">
+                                    <option value="-1"  selected disabled>Silahkan Pilih Wilayah</option>
                                     @foreach ($wilayahs as $wilayah)
-                                        <option value="{{$wilayah->id}}"> {{$wilayah->wilayah}}</option>
+                                        <option id="wilayah_id" value="{{$wilayah->id}}"> {{$wilayah->wilayah}}</option>
                                         @endforeach
                                 </select>
                         </div>
                             <div class="col-md-4">
                                 <label for="unit_kerja">Unit Kerja</label>
-                                <select class="form-control js-states" name="unit_kerja_id">
-                                    <option value="-1" selected disabled>Silahkan Pilih Unit Kerja</option>
-             
-                                    @foreach ($units as $unit)
-                                        <option value="{{$unit->id}}">{{$unit->unit_kerja}}</option>
-                                    @endforeach
+                                <select class="form-control js-units" name="unit_kerja_id" id="unit_kerja_id">
+                                    <option value="-1" selected disabled></option>
                                  
                             
                                 </select>
@@ -196,5 +192,12 @@
       </div>
     </div>
   </div>
+
+  <script>
+      function updateData(){
+    
+      }
+      updateData()
+  </script>
 
   @endsection

@@ -1,7 +1,7 @@
 @extends('admin.karyawan.base')
 
 @section('action-content')
-<div class="container" style="width: 85vw">
+<div  style="width: 85vw">
     <div class="row">
         <div class="col-md-11 ">
             <div class="panel panel-default">
@@ -76,7 +76,7 @@
 
                            <div class="col-md-4">
                                <label>Wilayah</label>
-                            <select class="form-control" name="wilayah_id">
+                            <select disabled class="form-control js-wilayah" name="wilayah_id">
                                 @foreach ($wilayahs as $wilayah)
                                     <option {{$karyawan->wilayah_id == $wilayah->id ? 'selected' : ''}} value="{{$wilayah->id}}">{{$wilayah->wilayah}}</option>
                                 @endforeach
@@ -85,9 +85,9 @@
 
                             <div class="col-md-4">
                                 <label>unit kerja </label>
-                                <select class="form-control" name="unit_kerja_id">
+                                <select disabled class="form-control js-units" name="unit_kerja_id">
                                     @foreach ($units as $unit)
-                                        <option {{$karyawan->unit_kerja_id == $unit->id ? 'selected' : ''}} value="{{$unit->id}}">{{$unit->unit_kerja}}</option>
+                                        <option  {{$karyawan->unit_kerja_id == $unit->id ? 'selected' : ''}} value="{{$unit->id}}">{{$unit->unit_kerja}}</option>
                                     @endforeach
                                 </select>
                         </div>
@@ -172,13 +172,19 @@
                             </span>
                         @endif
                 </div>
-                <div class="col-md-8">
-                    <label>foto ktp</label>
+                <div class="col-md-8" style="margin-top:50px">
+                    <label>foto ktp</label><div>
+                    <img src="{{asset('uploads/'.substr($karyawan->foto_ktp,66))}}" width="300"/>
                     <input type="file" name="foto_ktp" value="{{$karyawan->foto_ktp}}"/>
                 </div>
-                <div class="col-md-8">
+                </div>
+        
+                <div class="col-md-8" style="margin-top:50px">
                     <label>foto karyawan</label>
-                    <input type="file" name="foto_karyawan" value="{{$karyawan->foto_karyawan}}"/>
+                    <div>
+                    <img src="{{asset('uploads/'.substr($karyawan->foto_karyawan,66))}}" width="300"/>
+                    <input type="file" class="foto_karyawan" name="foto_karyawan" value="{{$karyawan->foto_karyawan}}"/>
+                </div>
                 </div>
                     <br><br><br><br>
                         <div class="form-group pull-right">

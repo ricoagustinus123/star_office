@@ -34,6 +34,12 @@ class UnitKerjaController extends Controller
         return "record are imported";
      }
 
+     public function loadUnits($wilayahId)
+     {
+         $units = unit_kerja::where('wilayah_id','=',$wilayahId)->get(['id','unit_kerja']);
+         return response()->json($units);
+     }
+
     /**
      * Store a newly created resource in storage.
      *
