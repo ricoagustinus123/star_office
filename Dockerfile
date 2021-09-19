@@ -10,7 +10,8 @@ RUN mkdir -p /app
 COPY . /app
 
 RUN sh -c "wget http://getcomposer.org/composer.phar && chmod a+x composer.phar && mv composer.phar /usr/bin/composer"
-RUN . /usr/bin/composer update
+RUN composer install
+RUN composer update
 
 RUN chown -R www-data: /app
 
