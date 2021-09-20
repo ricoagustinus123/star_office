@@ -29,10 +29,39 @@ class KaryawanController extends Controller
     public function indexKanwil1(Request $req){
         $users = $req->session()->get('status');
         if ($users === "admin") {
-            $karyawans = karyawan::where("wilayah_id",1)->orWhere("wilayah_id",2)->orWhere("wilayah_id",3)->paginate(10); 
+            $karyawans = karyawan::all();
+            $wilayahs = wilayah::all();
+            $units = unit_kerja::all(); 
+        }else if ($users === "surabaya") {
+            $karyawans = karyawan::where("wilayah_id",5)->paginate(10);
+            $wilayahs = wilayah::where('id',6);
+            $units = unit_kerja::where("wilayah_id",6); 
+        }else if ($users === "semarang") {
+            $karyawans = karyawan::where("wilayah_id",5)->paginate(10);
+            $wilayahs = wilayah::where('id',5);
+            $units = unit_kerja::where("wilayah_id",5); 
+        }else if ($users === "bandung") {
+            $karyawans = karyawan::where("wilayah_id",4)->paginate(10);
+            $wilayahs = wilayah::where('id',4);
+            $units = unit_kerja::where("wilayah_id",4); 
+        }else if ($users === "makassar") {
+            $karyawans = karyawan::where("wilayah_id",9)->paginate(10);
+            $wilayahs = wilayah::where('id',9);
+            $units = unit_kerja::where("wilayah_id",9); 
+        }else if ($users === "pusat1") {
+            $karyawans = karyawan::where("wilayah_id",1)->orWhere("wilayah_id",8)->paginate(10);
+            $wilayahs = wilayah::where('id',1)->orWhere("id",8);
+            $units = unit_kerja::where("wilayah_id",1)->orWhere("wilayah_id",8); 
+        }else if ($users === "pusat2") {
+            $karyawans = karyawan::where("wilayah_id",3)->orWhere("wilayah_id",11)->orWhere("wilayah_id",12)->paginate(10);
+            $wilayahs = wilayah::where('id',3)->orWhere("id",11)->orWhere("id",12);
+            $units = unit_kerja::where("wilayah_id",3)->orWhere("wilayah_id",11)->orWhere("wilayah_id",12); 
+        }else if ($users === "pusat3") {
+            $karyawans = karyawan::where("wilayah_id",2)->orWhere("wilayah_id",7)->paginate(10);
+            $wilayahs = wilayah::where('id',2)->orWhere("id",7);
+            $units = unit_kerja::where("wilayah_id",2)->orWhere("wilayah_id",7); 
         }
-        $wilayahs = wilayah::all();
-        $units = unit_kerja::all();
+       
         return view('admin.karyawan.index',compact('karyawans','wilayahs','units'));
         
         

@@ -28,6 +28,8 @@ class CreateKaryawansTable extends Migration
             $table->string('bidang_tugas')->nullable();
             $table->string('pendidikan_formal')->nullable();
             $table->integer('honor')->nullable();
+            $table->integer('no_rekening')->nullable();
+            $table->integer('bank')->nullable();
             $table->string('no_telp')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->text('alamat_domisili')->nullable();

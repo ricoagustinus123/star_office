@@ -14,7 +14,7 @@ class AuthUserController extends Controller
                 'name'=>'required',
                 'email'=>'required|email|unique:users',
                 'status'=>'required',
-                'password'=>'required|min:5|max:12'
+                'password'=>'required|min:5|max:20'
         ]);
         $user = new User;
         $user->name = $req->name;
