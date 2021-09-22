@@ -134,6 +134,33 @@
                                 @endif
                             </div>
                             <div class="col-md-4">
+                                <label>no rekening</label>
+                                <input id="no_rekening" type="number" class="form-control" name="no_rekening" value="{{ $karyawan->no_rekening }}" required>
+
+                                @if ($errors->has('no_rekening'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('no_rekening') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="col-md-4">
+                                <label>nama bank</label>
+                                <select class="form-control js-states" name="nama_bank">
+                                    <option value="-1" selected disabled>Nama Bank</option>
+                                    <option value="mandiri" {{$karyawan->nama_bank === 'mandiri' ? 'selected' : ''}} >Mandiri</option>
+                                    <option value="bca" {{$karyawan->nama_bank === 'bca' ? 'selected' : ''}} >bca</option>
+                                    <option value="bri"{{$karyawan->nama_bank === 'bri' ? 'selected' : ''}} >bri</option>
+                                    <option value="bni" {{$karyawan->nama_bank === 'bni' ? 'selected' : ''}} >bni</option>
+                                    <option value="cimb" {{$karyawan->nama_bank === 'cimb' ? 'selected' : ''}} >cimb</option>
+                                    
+                                </select>
+                                @if ($errors->has('nama_bank'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('nama_bank') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                            <div class="col-md-4">
                               
                                     <label>no telpon</label>
                                     <input type="number" value="{{ $karyawan->no_telp }}" name="no_telp" class="form-control pull-right" required>
@@ -151,7 +178,7 @@
                                 <label>Status Vaksin</label>
                                 <input type="text" value="{{ $karyawan->vaksin }}" name="vaksin" class="form-control pull-right" id="hiredDate" required>
                             
-                    </div>
+                    </div><div></div><div></div>
                         <div class="col-md-8">
                             <label>Alamat Domisili</label>
                             <textarea id="alamat" type="text" class="form-control" name="alamat_domisili"  required>{{ $karyawan->alamat_domisili }}</textarea>

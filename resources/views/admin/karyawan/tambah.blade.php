@@ -123,19 +123,39 @@
                             <label for="">Honor</label>
                                 <input id="honor" type="number" class="form-control" name="honor"  required placeholder="Honor">
                                
-                        </div><br/> <br/> <br/>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="">No Rekening</label>
+                                <input id="no_rekening" type="number" class="form-control" name="no_rekening"  required placeholder="No Rekening">
+                               
+                        </div>
+                        <br/> <br/> <br/>
                         
                        
                             <div class="col-md-4">
-                                <label for="">Perjanjian Kerja</label>
-                                <select class="form-control js-country" name="perjanjian_kerja">
-                                    <option value="-1" selected disabled>Perjanjian Kerja</option>
+                                <label for="">Nama Bank</label>
+                                <select class="form-control js-country" name="nama_bank">
+                                    <option value="-1" selected disabled>Nama Bank</option>
                                    
-                                        <option value="ada">Ada Kontrak</option>
-                                        <option value="tidak ada">Tidak Ada Kontrak</option>
+                                        <option value="mandiri">Mandiri</option>
+                                        <option value="bca">BCA</option>
+                                        <option value="bri">BRI</option>
+                                        <option value="bni">BNI</option>
+                                        <option value="cimb">CIMB NIAGA</option>
                                    
                                 </select>
                         </div>
+
+                        <div class="col-md-4">
+                            <label for="">Perjanjian Kerja</label>
+                            <select class="form-control js-country" name="perjanjian_kerja">
+                                <option value="-1" selected disabled>Perjanjian Kerja</option>
+                               
+                                    <option value="ada">Ada Kontrak</option>
+                                    <option value="tidak ada">Tidak Ada Kontrak</option>
+                               
+                            </select>
+                    </div>
 
                         <div class="col-md-4">
                             <label for="">Kontrak Ke:</label>

@@ -112,6 +112,9 @@ class KaryawanController extends Controller
         $karyawans->perjanjian_kerja = $req->perjanjian_kerja;
         $karyawans->kontrak = $req->kontrak;
         $karyawans->vaksin = $req->vaksin;
+        $karyawans->no_rekening = $req->no_rekening;
+        $karyawans->nama_bank = $req->nama_bank;
+        $karyawans->vaksin = $req->vaksin;
         $foto = $req->file('file_ktp')->getClientOriginalName();
         $karyawans->foto_ktp = $req->file('file_ktp')->move(public_path('uploads'),$foto); 
         $foto_karyawan = $req->file('file_karyawan')->getClientOriginalName();
@@ -203,7 +206,9 @@ class KaryawanController extends Controller
         "foto_ktp"=>$req->input('foto_ktp'),
         "perjanjian_kerja"=>$req->input('perjanjian_kerja'),
         "kontrak"=>$req->input('kontrak'),
-        "vaksin"=>$req->input('vaksin')
+        "vaksin"=>$req->input('vaksin'),
+        "no_rekening"=>$req->input('no_rekening'),
+        "nama_bank"=>$req->input('nama_bank')
                       
     ]);
         if($karyawans){
