@@ -36,7 +36,7 @@ class AuthUserController extends Controller
     //    return $req->input();
         $req->validate([
             'email'=>'required|email',
-            'password'=>'required|min:5|max:12'
+            'password'=>'required|min:5|max:20'
         ]);
         $users = User::all()->where('email','=',$req->email)->first();
         if ($users) {

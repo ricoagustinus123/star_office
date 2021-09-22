@@ -1,25 +1,24 @@
-runtime: php7.3
-env: flex
+runtime: php74
 
-runtime_config:
-  document_root: public
+handlers:
+- url: /(.*\.(gif|png|jpg|css|js))$
+  static_files: public/\1
+  upload: public/.*\.(gif|png|jpg|css|js)$
 
-skip_files:
-  .env
 
 env_variables:
   APP_NAME: Laravel
-  APP_ENV: local
-  APP_KEY: base64:h/mbh3MzdaCkH5BesFQIH5/C389AwM4qqMGjSgxgYgw=
+  APP_ENV: production
+  APP_KEY: base64:M6Z34x0cz9hIuh1wZoByk2amjUlE6QL/BFMG90bscGo=
   APP_DEBUG: true
-  APP_URL: http://localhost
-
-  LOG_CHANNEL: stack
+  APP_URL: https://jovial-sight-321203.as.r.appspot.com/
+  APP_STORAGE: /tmp
+  VIEW_COMPILED_PATH: /tmp
   LOG_LEVEL: debug
-
-  DB_CONNECTION: mysql
-  DB_HOST: 34.126.96.73
-  DB_PORT: 3306
+  LOG_CHANNEL: stderr 
+  CACHE_DRIVER: database
+  SESSION_DRIVER: cookie
   DB_DATABASE: star_office
   DB_USERNAME: root
   DB_PASSWORD: Bjsindonesia567*
+  DB_SOCKET: "/cloudsql/jovial-sight-321203:asia-southeast1:bjs"

@@ -52,9 +52,16 @@ Route::middleware(['isLogged'])->group(function () {
     // wilayah
     Route::get('/admin/wilayah',[WilayahController::class,'index']);
 // Surabaya dashboard
-Route::get('surabaya/dashboard',[TampilController::class,'dashboard_surabaya']);
+Route::get('surabaya/dashboard',[TampilController::class,'dashboard_admin']);
 Route::get('/logout',[AuthUserController::class,'logout']);
 
 
+
+
 });
+Route::group(['prefix' => 'units'], function()
+{
+    Route::get('/{wilayahId}',[UnitKerjaController::class,'loadunits']);
+});
+
 

@@ -145,7 +145,7 @@
                         
                         <div class="col-md-4">
                             <label for="">vaksin:</label>
-                            <select class="form-control js-country" name="vaksin">
+                            <select class="form-control" name="vaksin">
                                 <option value="-1" selected disabled>Vaksin</option>
                                
                                     <option value="sudah">sudah vaksin</option>

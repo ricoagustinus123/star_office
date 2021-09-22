@@ -34,7 +34,7 @@ function loadUnits(element) {
 
 function loadUnits(element) {
     $('.js-units').empty().append('<option value="-1">Silahkan Pilih Unit Kerja</option>');;
-    loadItems(element, '/api/units/', '.js-units');
+    loadItems(element, '/units/', '.js-units');
 }
 
 function registerEvents() {
