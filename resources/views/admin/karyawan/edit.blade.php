@@ -18,18 +18,29 @@
                             
                       
                             <div class="col-md-4">
-                                <label>nama</label>
+                                <label>Nama</label>
                                 <input id="nama" type="text" class="form-control" name="nama" value="{{ $karyawan->nama }}" required autofocus placeholder="First Name">
 
                             </div>
                             <div class="col-md-4">
-                                <label>nik</label>
+                                <label>NIK</label>
 
                                 <input id="nik" type="text" class="form-control" name="nik" value="{{ $karyawan->nik }}" required placeholder="Middle Name">
 
                                 @if ($errors->has('nik'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('nik') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="col-md-4">
+                                <label>No NPWP</label>
+
+                                <input id="no_npwp" type="text" class="form-control" name="no_npwp" value="{{ $karyawan->no_npwp }}" required placeholder="Middle Name">
+
+                                @if ($errors->has('no_npwp'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('no_npwp') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -43,11 +54,11 @@
                             <label for="no_bpjs_kesehatan">No BPJS Kesehatan:</label>
                             <input id="no_bpjs_kesehatan" type="text" class="form-control" name="no_bpjs_kesehatan"  required autofocus placeholder="No BPJS Kesehatan" value="{{$karyawan->no_bpjs_kesehatan}}">
                            
-                    </div><br><br><br>
+                    </div>
                         
                         
                             <div class="col-md-4">
-                                <label>tanggal lahir</label>
+                                <label>Tanggal Lahir</label>
                                 <input id="tanggal_lahir" type="date" class="form-control" name="tanggal_lahir" value="{{ $karyawan->tanggal_lahir }}" required>
 
                                 @if ($errors->has('tanggal_lahir'))
@@ -58,7 +69,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label>jenis kelamin</label>
+                            <label>Jenis Kelamin</label>
                             <select class="form-control js-country" name="jenis_kelamin">
                                 <option value="-1" selected disabled>Jenis Kelamin</option>
                                 <option value="pria" {{$karyawan->jenis_kelamin === "pria" ? 'selected':""}}>Pria</option>
@@ -84,7 +95,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label>unit kerja </label>
+                                <label>Unit Kerja </label>
                                 <select disabled class="form-control js-units" name="unit_kerja_id">
                                     @foreach ($units as $unit)
                                         <option  {{$karyawan->unit_kerja_id == $unit->id ? 'selected' : ''}} value="{{$unit->id}}">{{$unit->unit_kerja}}</option>
@@ -94,7 +105,7 @@
                        
   
                             <div class="col-md-4">
-                                <label>bidang tugas</label>
+                                <label>Bidang Tugas</label>
                                 <select class="form-control js-states" name="bidang_tugas">
                                     <option value="security" {{$karyawan->bidang_tugas === 'security' ? 'selected' : ''}} >security</option>
                                     <option value="driver" {{$karyawan->bidang_tugas === 'driver' ? 'selected' : ''}} >driver</option>
@@ -113,7 +124,7 @@
 
                         <br/><br/><br/>
                         <div class="col-md-4">
-                            <label for="">Pendidikan Formal:</label>
+                            <label for="">Pendidikan Formal</label>
                             <input id="pendidikan_formal" type="text" class="form-control" name="pendidikan_formal" value="{{ $karyawan->pendidikan_formal }}" required>
 
                                 @if ($errors->has('pendidikan_formal'))
@@ -124,7 +135,7 @@
                            
                     </div> 
                             <div class="col-md-4">
-                                <label>honor</label>
+                                <label>Honor</label>
                                 <input id="honor" type="number" class="form-control" name="honor" value="{{ $karyawan->honor }}" required>
 
                                 @if ($errors->has('honor'))
@@ -134,7 +145,7 @@
                                 @endif
                             </div>
                             <div class="col-md-4">
-                                <label>no rekening</label>
+                                <label>No Rekening</label>
                                 <input id="no_rekening" type="number" class="form-control" name="no_rekening" value="{{ $karyawan->no_rekening }}" required>
 
                                 @if ($errors->has('no_rekening'))
@@ -144,14 +155,14 @@
                                 @endif
                             </div>
                             <div class="col-md-4">
-                                <label>nama bank</label>
+                                <label>Nama Bank</label>
                                 <select class="form-control js-states" name="nama_bank">
                                     <option value="-1" selected disabled>Nama Bank</option>
                                     <option value="mandiri" {{$karyawan->nama_bank === 'mandiri' ? 'selected' : ''}} >Mandiri</option>
-                                    <option value="bca" {{$karyawan->nama_bank === 'bca' ? 'selected' : ''}} >bca</option>
-                                    <option value="bri"{{$karyawan->nama_bank === 'bri' ? 'selected' : ''}} >bri</option>
-                                    <option value="bni" {{$karyawan->nama_bank === 'bni' ? 'selected' : ''}} >bni</option>
-                                    <option value="cimb" {{$karyawan->nama_bank === 'cimb' ? 'selected' : ''}} >cimb</option>
+                                    <option value="bca" {{$karyawan->nama_bank === 'bca' ? 'selected' : ''}} >BCA</option>
+                                    <option value="bri"{{$karyawan->nama_bank === 'bri' ? 'selected' : ''}} >BRI</option>
+                                    <option value="bni" {{$karyawan->nama_bank === 'bni' ? 'selected' : ''}} >BNI</option>
+                                    <option value="cimb" {{$karyawan->nama_bank === 'cimb' ? 'selected' : ''}} >CIMB</option>
                                     
                                 </select>
                                 @if ($errors->has('nama_bank'))
@@ -162,13 +173,13 @@
                         </div>
                             <div class="col-md-4">
                               
-                                    <label>no telpon</label>
+                                    <label>No Telpon</label>
                                     <input type="number" value="{{ $karyawan->no_telp }}" name="no_telp" class="form-control pull-right" required>
                              
                         </div>
 
                             <div class="col-md-4">
-                                    <label>perjanjian kerja</label>
+                                    <label>Perjanjian Kerja</label>
                                     <input type="text" value="{{ $karyawan->perjanjian_kerja }}" name="perjanjian_kerja" class="form-control pull-right" id="hiredDate" required>
                                 
                         </div>
@@ -210,7 +221,7 @@
                     <label>foto karyawan</label>
                     <div>
                     <img src="{{asset('uploads/'.substr($karyawan->foto_karyawan,66))}}" width="300"/>
-                    <input type="file" class="foto_karyawan" name="foto_karyawan" value="{{$karyawan->foto_karyawan}}"/>
+                    <input type="file" class="foto_karyawan" name="foto_karyawan"  value="{{$karyawan->foto_karyawan}}"/>
                 </div>
                 </div>
                     <br><br><br><br>

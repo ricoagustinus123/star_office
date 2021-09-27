@@ -44,17 +44,17 @@ class AuthUserController extends Controller
                 $req->session()->put('LoggedUser',$users->id);
                 $req->session()->put('status',$users->status);
                 if ($users->status === 'admin') {
-                    return redirect('admin/dashboard');
+                    return redirect('/dashboard');
                 }if ($users->status === 'keuangan' && $users->status === 'bisnis' ) {
                     return redirect('/dashboard');  
                 }if ($users->status === 'surabaya' ) {
-                    return redirect('surabaya/dashboard');  
+                    return redirect('/dashboard');  
                 }if ($users->status === 'bandung' ) {
-                    return redirect('bandung/dashboard');  
+                    return redirect('/dashboard');  
                 }if ($users->status === 'semarang' ) {
-                    return redirect('semarang/dashboard');  
+                    return redirect('/dashboard');  
                 }if ($users->status === 'makassar' ) {
-                    return redirect('makassar/dashboard');  
+                    return redirect('/dashboard');  
                 }else {
                     return back()->with('fail','status tidak ditemukan');
                 }

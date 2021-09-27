@@ -24,8 +24,8 @@
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <!-- Optionally, you can add icons to the links -->
-        <li class="{{(request()->is('admin/dashboard')) ? 'active' : 'treeview'}}"><a href="{{url('admin/dashboard')}}"><i class="fa fa-dashboard fa-lg"></i> <span style="color:rgb(255, 255, 255); font-size:1.5rem">Dashboard</span></a></li><br/>
-        <li class="{{(request()->is('admin/karyawan')) ? 'active' : 'treeview'}}"><a href="{{ url('admin/karyawan') }}"><i class="fa fa-user fa-lg"></i> <span style="color:rgb(255, 255, 255); font-size:1.5rem"> Add Employees </span></a></li><br/>
+        <li class="{{(request()->is('/dashboard')) ? 'active' : 'treeview'}}"><a href="{{url('/dashboard')}}"><i class="fa fa-dashboard fa-lg"></i> <span style="color:rgb(255, 255, 255); font-size:1.5rem">Dashboard</span></a></li><br/>
+        <li class="{{(request()->is('/karyawan')) ? 'active' : 'treeview'}}"><a href="{{ url('/karyawan') }}"><i class="fa fa-user fa-lg"></i> <span style="color:rgb(255, 255, 255); font-size:1.5rem"> Add Employees </span></a></li><br/>
         <li class="{{(request()->is('#')) ? 'active' : 'treeview'}}">
           <a href="#"><i class="fa fa-gear fa-lg"></i> <span style="color:rgb(255, 255, 255); font-size:1.5rem"> General Management </span>
             <span class="pull-right-container">

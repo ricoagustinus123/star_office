@@ -8,7 +8,7 @@
       <div class="box" style="height: auto; padding:5px; overflow-x:hidden;  width="auto">
   <div class="box-header">
     @include('admin.flash_message')
-    <a href="{{url('admin/karyawan/tambah')}}" class="btn btn-info pull-right" data-toggle="modal" >
+    <a href="{{url('/karyawan/tambah')}}" class="btn btn-info pull-right" data-toggle="modal" >
       <i class="fa fa-plus"></i> Tambah Karyawan
     </a>
   <!-- /.box-header -->
@@ -46,7 +46,7 @@
                 <th  >Bidang_Tugas</th>
                 <th  >Honor</th>
                 <th  >No_Telpon</th>
-                <th  >Pendidikan</th></th>
+                <th  >Pendidikan_Formal</th></th>
                 <th  >Alamat_domisili</th>
                 <th  >Alamat_KTP</th>
                 <th  >Perjanjian_Kerja</th>
@@ -68,7 +68,7 @@
                   @foreach ($wilayahs as $wilayah)
                   @if ($wilayah->id == $karyawan->wilayah_id)
                   <td>{{ $wilayah->wilayah }}</td>
-                  @else
+      
                  
                   @endif
                   

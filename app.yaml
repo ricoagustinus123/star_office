@@ -11,7 +11,7 @@ env_variables:
   APP_ENV: production
   APP_KEY: base64:M6Z34x0cz9hIuh1wZoByk2amjUlE6QL/BFMG90bscGo=
   APP_DEBUG: true
-  APP_URL: https://jovial-sight-321203.as.r.appspot.com/
+  APP_URL: https://bjs-staroffice.com/
   APP_STORAGE: /tmp
   VIEW_COMPILED_PATH: /tmp
   LOG_LEVEL: debug

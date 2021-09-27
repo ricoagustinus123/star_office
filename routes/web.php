@@ -34,18 +34,18 @@ Route::post('tambah',[WilayahController::class,'create'])->name('tambah.wilayah'
 
 Route::middleware(['isLogged'])->group(function () {
     // Admin Dasgboard
-    Route::get('admin/dashboard',[TampilController::class,'dashboard_admin']);
-    Route::get('admin/karyawan',[KaryawanController::class,'index']);
-    Route::get('admin/karyawan/search/',[KaryawanController::class,'show'],function(Request $request){
+    Route::get('/dashboard',[TampilController::class,'dashboard_admin']);
+    Route::get('/karyawan',[KaryawanController::class,'indexkanwil']);
+    Route::get('/karyawan/search/',[KaryawanController::class,'show'],function(Request $request){
         $token = $request->session()->token();
 
         $token = csrf_token();
     })->name('search.karyawan');
-    Route::get('admin/karyawan/tambah',[KaryawanController::class,'formtambah']);
-    Route::post('admin/karyawan/tambah',[KaryawanController::class,'create'])->name('proses.tambah');
-    Route::get('admin/karyawan/edit/{id}',[KaryawanController::class,'formedit'])->name('edit.karyawan');
-    Route::post('admin/karyawan/update',[KaryawanController::class,'update'])->name('proses.update');
-    Route::delete('admin/karyawan/delete/{id}',[KaryawanController::class,'destroy'])->name('delete.karyawan');
+    Route::get('/karyawan/tambah',[KaryawanController::class,'formtambah']);
+    Route::post('/karyawan/tambah',[KaryawanController::class,'create'])->name('proses.tambah');
+    Route::get('/karyawan/edit/{id}',[KaryawanController::class,'formedit'])->name('edit.karyawan');
+    Route::post('/karyawan/update',[KaryawanController::class,'update'])->name('proses.update');
+    Route::delete('/karyawan/delete/{id}',[KaryawanController::class,'destroy'])->name('delete.karyawan');
 
     // cetak pdf
     Route::get('admin/karyawan/pdf/{id}',[KaryawanController::class,'cetak_pdf'])->name('cetak.karyawan');

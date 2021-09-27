@@ -26,42 +26,44 @@ class KaryawanController extends Controller
         return view('admin.karyawan.index',compact('karyawans','wilayahs','units'));
         
     }
-    public function indexKanwil1(Request $req){
+    public function indexkanwil(Request $req){
         $users = $req->session()->get('status');
-        if ($users === "admin") {
-            $karyawans = karyawan::all();
-            $wilayahs = wilayah::all();
-            $units = unit_kerja::all(); 
-        }else if ($users === "surabaya") {
-            $karyawans = karyawan::where("wilayah_id",5)->paginate(10);
-            $wilayahs = wilayah::where('id',6);
-            $units = unit_kerja::where("wilayah_id",6); 
+         if ($users === "surabaya") {
+            $karyawans = karyawan::where("wilayah_id",6)->paginate(10);
+            $wilayahs = wilayah::where('id','==',6)->get();
+            $units = unit_kerja::where("wilayah_id",'==',6)->get(); 
         }else if ($users === "semarang") {
             $karyawans = karyawan::where("wilayah_id",5)->paginate(10);
-            $wilayahs = wilayah::where('id',5);
-            $units = unit_kerja::where("wilayah_id",5); 
+            $wilayahs = wilayah::where('id',5)-get();
+            $units = unit_kerja::where("wilayah_id",5)->get(); 
         }else if ($users === "bandung") {
             $karyawans = karyawan::where("wilayah_id",4)->paginate(10);
-            $wilayahs = wilayah::where('id',4);
-            $units = unit_kerja::where("wilayah_id",4); 
+            $wilayahs = wilayah::where('id',4)->get();
+            $units = unit_kerja::where("wilayah_id",4)->get(); 
         }else if ($users === "makassar") {
             $karyawans = karyawan::where("wilayah_id",9)->paginate(10);
-            $wilayahs = wilayah::where('id',9);
-            $units = unit_kerja::where("wilayah_id",9); 
+            $wilayahs = wilayah::where('id',9)->get();
+            $units = unit_kerja::where("wilayah_id",9)->get(); 
         }else if ($users === "pusat1") {
             $karyawans = karyawan::where("wilayah_id",1)->orWhere("wilayah_id",8)->paginate(10);
-            $wilayahs = wilayah::where('id',1)->orWhere("id",8);
-            $units = unit_kerja::where("wilayah_id",1)->orWhere("wilayah_id",8); 
+            $wilayahs = wilayah::where('id',1)->orWhere("id",8)->get();
+            $units = unit_kerja::where("wilayah_id",1)->orWhere("wilayah_id",8)->get(); 
         }else if ($users === "pusat2") {
             $karyawans = karyawan::where("wilayah_id",3)->orWhere("wilayah_id",11)->orWhere("wilayah_id",12)->paginate(10);
-            $wilayahs = wilayah::where('id',3)->orWhere("id",11)->orWhere("id",12);
-            $units = unit_kerja::where("wilayah_id",3)->orWhere("wilayah_id",11)->orWhere("wilayah_id",12); 
+            $wilayahs = wilayah::where('id',3)->orWhere("id",11)->orWhere("id",12)->get();
+            $units = unit_kerja::where("wilayah_id",3)->orWhere("wilayah_id",11)->orWhere("wilayah_id",12)->get(); 
         }else if ($users === "pusat3") {
             $karyawans = karyawan::where("wilayah_id",2)->orWhere("wilayah_id",7)->paginate(10);
-            $wilayahs = wilayah::where('id',2)->orWhere("id",7);
-            $units = unit_kerja::where("wilayah_id",2)->orWhere("wilayah_id",7); 
-        }
+            $wilayahs = wilayah::where('id',2)->orWhere("id",7)->get();
+            $units = unit_kerja::where("wilayah_id",2)->orWhere("wilayah_id",7)->get(); 
+        }else if ($users === "admin") {
+            $karyawans = karyawan::paginate(10);
+            $wilayahs = wilayah::all();
+            $units = unit_kerja::all();
        
+        }
+      
+        
         return view('admin.karyawan.index',compact('karyawans','wilayahs','units'));
         
         
@@ -230,10 +232,13 @@ class KaryawanController extends Controller
         $karyawans = karyawan::find($id);
         $data_ktp = substr($karyawans->foto_ktp,66);
         $data_karyawan = substr($karyawans->foto_karyawan,66);
-        unlink(public_path("uploads/$data_ktp"));
+        if ($data_ktp && $data_karyawan) {
+            unlink(public_path("uploads/$data_ktp"));
         unlink(public_path("uploads/$data_karyawan"));
         $karyawans->delete();
-        return redirect('admin/karyawan');
+        }   $karyawans->delete();
+     
+        return redirect('/karyawan');
     }
 
     public function cetak_pdf($id)
