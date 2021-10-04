@@ -71,8 +71,33 @@ class KaryawanController extends Controller
     }
     public function formtambah(Request $req)
     {
-        $wilayahs = wilayah::all();
-        $units = unit_kerja::all();
+        $users = $req->session()->get('status');
+        if ($users === "surabaya") {
+           $wilayahs = wilayah::where('id','==',6)->get();
+           $units = unit_kerja::where("wilayah_id",'==',6)->get(); 
+       }else if ($users === "semarang") {
+           $wilayahs = wilayah::where('id',5)-get();
+           $units = unit_kerja::where("wilayah_id",5)->get(); 
+       }else if ($users === "bandung") {
+           $wilayahs = wilayah::where('id',4)->get();
+           $units = unit_kerja::where("wilayah_id",4)->get(); 
+       }else if ($users === "makassar") {
+           $wilayahs = wilayah::where('id',9)->get();
+           $units = unit_kerja::where("wilayah_id",9)->get(); 
+       }else if ($users === "pusat1") {
+           $wilayahs = wilayah::where('id',1)->orWhere("id",8)->get();
+           $units = unit_kerja::where("wilayah_id",1)->orWhere("wilayah_id",8)->get(); 
+       }else if ($users === "pusat2") {
+           $wilayahs = wilayah::where('id',3)->orWhere("id",11)->orWhere("id",12)->get();
+           $units = unit_kerja::where("wilayah_id",3)->orWhere("wilayah_id",11)->orWhere("wilayah_id",12)->get(); 
+       }else if ($users === "pusat3") {
+           $wilayahs = wilayah::where('id',2)->orWhere("id",7)->get();
+           $units = unit_kerja::where("wilayah_id",2)->orWhere("wilayah_id",7)->get(); 
+       }else if ($users === "admin") {
+           $wilayahs = wilayah::all();
+           $units = unit_kerja::all();
+      
+       }
         return view('admin.karyawan.tambah',compact('wilayahs','units'));
     }   
 
@@ -117,14 +142,19 @@ class KaryawanController extends Controller
         $karyawans->no_rekening = $req->no_rekening;
         $karyawans->nama_bank = $req->nama_bank;
         $karyawans->vaksin = $req->vaksin;
+   
         $foto = $req->file('file_ktp')->getClientOriginalName();
-        $karyawans->foto_ktp = $req->file('file_ktp')->move(public_path('uploads'),$foto); 
+        $karyawans->foto_ktp = $req->file('file_ktp')->move(public_path('uploads'),$foto);
+
+
         $foto_karyawan = $req->file('file_karyawan')->getClientOriginalName();
         $karyawans->foto_karyawan = $req->file('file_karyawan')->move(public_path('uploads'),$foto_karyawan);
+    
+       
         $query = $karyawans->save();
         if ($query) {
             
-            return redirect('admin/karyawan');
+            return redirect('/karyawan');
 
             
         }else{
@@ -188,7 +218,8 @@ class KaryawanController extends Controller
      */
     public function update(Request $req)
     {
-      
+        $foto = $req->file('foto_ktp')->getClientOriginalName();
+        $foto_karyawan = $req->file('foto_karyawan')->getClientOriginalName();
         $karyawans = karyawan::where('id',$req->id)->update([
         "nama"=>$req->input('nama'),
         "nik"=>$req->input('nik'),
@@ -204,8 +235,8 @@ class KaryawanController extends Controller
         "jenis_kelamin"=>$req->input('jenis_kelamin'),
         "alamat_domisili"=>$req->input('alamat_domisili'),
         "alamat_ktp"=>$req->input('alamat_ktp'),
-        "foto_karyawan"=>$req->input('foto_karyawan'),
-        "foto_ktp"=>$req->input('foto_ktp'),
+        "foto_karyawan"=>$req->file('foto_karyawan')->move(public_path('uploads'),$foto_karyawan),
+        "foto_ktp"=>$req->file('foto_ktp')->move(public_path('uploads'),$foto),
         "perjanjian_kerja"=>$req->input('perjanjian_kerja'),
         "kontrak"=>$req->input('kontrak'),
         "vaksin"=>$req->input('vaksin'),
@@ -214,7 +245,7 @@ class KaryawanController extends Controller
                       
     ]);
         if($karyawans){
-            return redirect('admin/karyawan');
+            return redirect('/karyawan');
         }else {
             return back();
         }

@@ -6,7 +6,7 @@
         <div class="col-md-11 ">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 style="font-weight:bolder; text-transform:uppercase; font-family: 'Times New Roman', Times, serif; color:red">UPDATE KARYAWAN</h3>
+                    <h3 style="font-weight:bolder; text-transform:uppercase; font-family: 'Times New Roman', Times, serif; color:rgb(34, 10, 10)">UPDATE KARYAWAN</h3>
                     </div>
                 <div class="panel-body"> @foreach ($karyawans as $karyawan)
                     <form class="form-horizontal" role="form" method="post" action="{{route('proses.update')}}" enctype="multipart/form-data">
@@ -25,7 +25,7 @@
                             <div class="col-md-4">
                                 <label>NIK</label>
 
-                                <input id="nik" type="text" class="form-control" name="nik" value="{{ $karyawan->nik }}" required placeholder="Middle Name">
+                                <input id="nik" type="text" class="form-control" name="nik" value="{{ $karyawan->nik }}" required placeholder="NIK">
 
                                 @if ($errors->has('nik'))
                                     <span class="help-block">
@@ -36,7 +36,7 @@
                             <div class="col-md-4">
                                 <label>No NPWP</label>
 
-                                <input id="no_npwp" type="text" class="form-control" name="no_npwp" value="{{ $karyawan->no_npwp }}" required placeholder="Middle Name">
+                                <input id="no_npwp" type="text" class="form-control" name="no_npwp" value="{{ $karyawan->no_npwp }}" required placeholder="No NPWP">
 
                                 @if ($errors->has('no_npwp'))
                                     <span class="help-block">
@@ -87,7 +87,7 @@
 
                            <div class="col-md-4">
                                <label>Wilayah</label>
-                            <select disabled class="form-control js-wilayah" name="wilayah_id">
+                            <select class="form-control js-wilayah" name="wilayah_id">
                                 @foreach ($wilayahs as $wilayah)
                                     <option {{$karyawan->wilayah_id == $wilayah->id ? 'selected' : ''}} value="{{$wilayah->id}}">{{$wilayah->wilayah}}</option>
                                 @endforeach
@@ -96,7 +96,7 @@
 
                             <div class="col-md-4">
                                 <label>Unit Kerja </label>
-                                <select disabled class="form-control js-units" name="unit_kerja_id">
+                                <select class="form-control js-units" name="unit_kerja_id">
                                     @foreach ($units as $unit)
                                         <option  {{$karyawan->unit_kerja_id == $unit->id ? 'selected' : ''}} value="{{$unit->id}}">{{$unit->unit_kerja}}</option>
                                     @endforeach
@@ -125,8 +125,14 @@
                         <br/><br/><br/>
                         <div class="col-md-4">
                             <label for="">Pendidikan Formal</label>
-                            <input id="pendidikan_formal" type="text" class="form-control" name="pendidikan_formal" value="{{ $karyawan->pendidikan_formal }}" required>
-
+                            <select class="form-control js-states" name="pendidikan_formal">
+                                <option value="S1"  selected disabled>Pilih Pendidikan</option>
+                                <option value="S1" {{$karyawan->pendidikan_formal == 'S1' ? 'selected':''}} >Sarjana S1</option>
+                                <option value="SMA" {{$karyawan->pendidikan_formal == 'SMA' ? 'selected':''}} >SMA</option>
+                                <option value="SMK/STM" {{$karyawan->pendidikan_formal == 'SMK/STM' ? 'selected':''}} >SMK/STM</option>
+                                <option value="SMP" {{$karyawan->pendidikan_formal == 'SMP' ? 'selected':''}} >SMP</option>
+                                <option value="SD" {{$karyawan->pendidikan_formal == 'SD' ? 'selected':''}}>SD</option>
+                            </select>
                                 @if ($errors->has('pendidikan_formal'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('honor') }}</strong>
@@ -180,40 +186,52 @@
 
                             <div class="col-md-4">
                                     <label>Perjanjian Kerja</label>
-                                    <input type="text" value="{{ $karyawan->perjanjian_kerja }}" name="perjanjian_kerja" class="form-control pull-right" id="hiredDate" required>
+                                    <select class="form-control js-states" name="perjanjian_kerja">
+                                        <option value="-1" selected disabled>Perjanjian Kerja</option>
+                                        <option value="mandiri" {{$karyawan->perjanjian_kerja === 'ada' ? 'selected' : ''}} >Ada kontrak</option>
+                                        <option value="mandiri" {{$karyawan->perjanjian_kerja === 'tidak ada' ? 'selected' : ''}} >tidak ada kontrak</option>
+        
+                                        
+                                    </select>
                                 
                         </div>
                         <br><br><br>
 
                         <div class="col-md-4">
                                 <label>Status Vaksin</label>
-                                <input type="text" value="{{ $karyawan->vaksin }}" name="vaksin" class="form-control pull-right" id="hiredDate" required>
+                                <select class="form-control js-states" name="vaksin">
+                                    <option value="-1" selected disabled>Vaksin</option>
+                                    <option value="sudah" {{$karyawan->vaksin === 'sudah' ? 'selected' : ''}} >sudah vaksin</option>
+                                    <option value="belum" {{$karyawan->vaksin === 'belum' ? 'selected' : ''}} >belum vaksin</option>
+    
+                                    
+                                </select>
                             
                     </div><div></div><div></div>
                         <div class="col-md-8">
                             <label>Alamat Domisili</label>
-                            <textarea id="alamat" type="text" class="form-control" name="alamat_domisili"  required>{{ $karyawan->alamat_domisili }}</textarea>
+                            <textarea id="alamat_domisili" type="text" class="form-control" name="alamat_domisili" value="{{ $karyawan->alamat_domisili }}"  required>{{ $karyawan->alamat_domisili }}</textarea>
 
-                            @if ($errors->has('alamat'))
+                            @if ($errors->has('alamat_domisili'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('alamat') }}</strong>
+                                    <strong>{{ $errors->first('alamat_domisili') }}</strong>
                                 </span>
                             @endif
                     </div>
                     <div class="col-md-8">
                         <label>Alamat KTP</label>
-                    <textarea id="alamat" type="text" class="form-control" name="alamat_ktp"  required>{{ $karyawan->alamat_ktp }}</textarea>
+                    <textarea id="alamat_ktp" type="text" class="form-control" name="alamat_ktp"  required>{{ $karyawan->alamat_ktp }}</textarea>
 
-                        @if ($errors->has('alamat'))
+                        @if ($errors->has('alamat_ktp'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('alamat') }}</strong>
+                                <strong>{{ $errors->first('alamat_ktp') }}</strong>
                             </span>
                         @endif
                 </div>
                 <div class="col-md-8" style="margin-top:50px">
                     <label>foto ktp</label><div>
                     <img src="{{asset('uploads/'.substr($karyawan->foto_ktp,66))}}" width="300"/>
-                    <input type="file" name="foto_ktp" value="{{$karyawan->foto_ktp}}"/>
+                    <input type="file" id="foto_ktp" name="foto_ktp" />
                 </div>
                 </div>
         
@@ -221,7 +239,7 @@
                     <label>foto karyawan</label>
                     <div>
                     <img src="{{asset('uploads/'.substr($karyawan->foto_karyawan,66))}}" width="300"/>
-                    <input type="file" class="foto_karyawan" name="foto_karyawan"  value="{{$karyawan->foto_karyawan}}"/>
+                    <input type="file" class="foto_karyawan" id="foto_karyawan" name="foto_karyawan" />
                 </div>
                 </div>
                     <br><br><br><br>

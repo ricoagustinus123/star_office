@@ -34,7 +34,7 @@
                     </div> 
                     <div class="col-md-4">
                         <label for="no_npwp">No NPWP:</label>
-                        <input id="no_npwp" type="text" class="form-control" name="no_npwp"  placeholder="NIK">
+                        <input id="no_npwp" type="text" class="form-control" name="no_npwp"  placeholder="No NPWP">
 
                        
                 </div>
@@ -159,7 +159,7 @@
 
                         <div class="col-md-4">
                             <label for="">Kontrak Ke:</label>
-                            <input id="kontrak" type="number" class="form-control" name="kontrak"  required placeholder="Kontrok Ke">
+                            <input id="kontrak" type="number" class="form-control" name="kontrak"  required placeholder="Kontrak Ke">
                     </div>
                         
                         
@@ -191,13 +191,13 @@
                 </div>
                 <div class="col-md-12">
                     <label for="">Upload Foto KTP:</label>
-                    <input type="file" name="file_ktp" id="file_ktp">
+                    <input type="file" name="file_ktp" id="file_ktp" required>
 
 
             </div>
             <div class="col-md-12">
                 <label for="file_karyawan">Upload Foto Karyawan:</label>
-                <input type="file" name="file_karyawan" id="file_karyawan">
+                <input type="file" name="file_karyawan" id="file_karyawan" required>
 
 
         </div>

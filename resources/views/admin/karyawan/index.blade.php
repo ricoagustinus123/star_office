@@ -92,8 +92,8 @@
                   <td>{{ $karyawan->perjanjian_kerja }}</td>
                   <td>{{ $karyawan->vaksin }}</td>
        
-                  <td><img src="{{asset('uploads/'.substr($karyawan->foto_ktp,66))}}" width="50" alt="gagal"></td>
-                  <td><img src="{{asset('uploads/'.substr($karyawan->foto_karyawan,66))}}" width="50" alt="gagal"></td>
+                  <td><img src="{{asset('uploads/'.substr($karyawan->foto_ktp,66)) ? :null}}" width="100" alt="gagal"></td>
+                  <td><img src="{{asset('uploads/'.substr($karyawan->foto_karyawan,66))}}" width="100" alt="gagal"></td>
                  
                   <td style="z-index:100; paddingZ:">
                 
